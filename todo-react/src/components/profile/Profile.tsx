@@ -3,7 +3,13 @@ import { Box, Typography } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 
-const Profile: FC = (): ReactElement => {
+interface IProfile {
+  name?: string;
+}
+
+const Profile: FC<IProfile> = (props): ReactElement => {
+  const { name = 'Nicky' } = props;
+
   return (
     <Box
       display="flex"
@@ -23,9 +29,9 @@ const Profile: FC = (): ReactElement => {
             transition:
               'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
             boxShadow:
-              '0px 0px 0px 4px rgba(233, 0, 0, 0.2), 0px 0px 0px 8px rgba(20, 60, 50, 0.7)',
+              '0px 0px 0px 5px rgba(233, 0, 0, 0.5), 0px 0px 0px 9px rgba(0, 60, 50, 0.7)',
             '&:hover': {
-              transform: 'scale(1.15)',
+              transform: 'scale(1.05)',
               boxShadow:
                 '0px 0px 0px 4px rgba(0, 0, 0, 0.2), 0px 0px 0px 12px rgba(0, 0, 0, 0.2)',
             },
@@ -33,7 +39,7 @@ const Profile: FC = (): ReactElement => {
         />
       </Stack>
       <Typography variant="h6" color="text.primary">
-        Welcome Nic
+        Welcome {name}
       </Typography>
       <Typography variant="body1" color="rgba(255, 255, 255, 0.3)">
         This is your task tracker
@@ -41,4 +47,5 @@ const Profile: FC = (): ReactElement => {
     </Box>
   );
 };
+
 export default Profile;

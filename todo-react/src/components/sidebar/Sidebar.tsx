@@ -3,6 +3,7 @@ import { Grid } from '@mui/material';
 import Profile from '../profile/Profile';
 
 const Sidebar: FC = (): ReactElement => {
+  const name = 'Nic';
   return (
     <Grid
       item
@@ -20,7 +21,7 @@ const Sidebar: FC = (): ReactElement => {
         alignItems: 'center',
       }}
     >
-      <Profile />
+      <Profile name={name} />
     </Grid>
   );
 };
