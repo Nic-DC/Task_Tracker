@@ -1,10 +1,15 @@
 import React, { FC, ReactElement } from 'react';
 import { TextField } from '@mui/material';
 import { ITextField } from './interfaces/ITextField';
+import PropTypes from 'prop-types';
 
-const TaskTitleField: FC<ITextField> = (props): ReactElement => {
-  const { disabled = false, onChange = (e) => console.log(e.target.value)` } =
-    props;
+const TaskTitleField: FC<ITextField> = (
+  props,
+): ReactElement => {
+  const {
+    onChange = (e) => console.log(e.target.value),
+    disabled = false,
+  } = props;
 
   return (
     <TextField
@@ -14,9 +19,15 @@ const TaskTitleField: FC<ITextField> = (props): ReactElement => {
       size="small"
       name="title"
       fullWidth
-      disabled={false}
-      onChange={(e) => console.log(e.target.value)}
+      disabled={disabled}
+      onChange={onChange}
     />
   );
 };
+
+TaskTitleField.propTypes = {
+  onChange: PropTypes.func,
+  disabled: PropTypes.bool,
+};
+
 export default TaskTitleField;
