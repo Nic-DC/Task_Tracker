@@ -1,6 +1,9 @@
 import React, { FC, ReactElement } from 'react';
 import { Grid } from '@mui/material';
 import Profile from '../profile/Profile';
+import CreateTaskForm from '../createTaskForms/CreateTaskForm';
+import TaskTitleField from '../createTaskForms/TaskTitleField';
+import TaskDescriptionField from '../createTaskForms/TaskDescriptionField';
 
 const Sidebar: FC = (): ReactElement => {
   const name = 'Nic';
@@ -22,6 +25,7 @@ const Sidebar: FC = (): ReactElement => {
       }}
     >
       <Profile name={name} />
+      <CreateTaskForm />
     </Grid>
   );
 };
