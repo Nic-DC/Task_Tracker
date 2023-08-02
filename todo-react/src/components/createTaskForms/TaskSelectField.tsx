@@ -11,30 +11,41 @@ import FormControl from '@mui/material/FormControl';
 import Select, {
   SelectChangeEvent,
 } from '@mui/material/Select';
+import { ISelectField } from './interfaces/ISelectField';
 
 import PropTypes from 'prop-types';
 
-const TaskSelectField: FC = (): ReactElement => {
-  //   const {
-  //     disabled = false,
-  //     value = new Date(),
-  //     onChange = (date) => console.log(date),
-  //   } = props;
+const TaskSelectField: FC<ISelectField> = (
+  props,
+): ReactElement => {
+  const {
+    name = 'SelectBox',
+    label = 'Select Box',
+    disabled = false,
+    value = '',
+    items = [{ value: '', label: 'Add Items' }],
+    onChange = (e: SelectChangeEvent) => console.log(e),
+  } = props;
 
   return (
     <FormControl fullWidth>
-      <InputLabel id="status">Status</InputLabel>
+      <InputLabel id={`${label}-id`}>{name}</InputLabel>
       <Select
-        label="Status"
-        labelId="status"
-        id="status-select"
-        value=""
-
-        // onChange={handleChange}
+        label={label}
+        labelId={`${label}-id`}
+        id={`${label}-id-select`}
+        value={value as ''}
+        disabled={disabled}
+        onChange={onChange}
       >
-        <MenuItem value={10}>Ten</MenuItem>
-        <MenuItem value={20}>Twenty</MenuItem>
-        <MenuItem value={30}>Thirty</MenuItem>
+        {items.map((item, index) => (
+          <MenuItem
+            key={item.value + index}
+            value={item.value}
+          >
+            {item.label}
+          </MenuItem>
+        ))}
       </Select>
     </FormControl>
   );
@@ -43,7 +54,16 @@ const TaskSelectField: FC = (): ReactElement => {
 TaskSelectField.propTypes = {
   onChange: PropTypes.func,
   disabled: PropTypes.bool,
-  value: PropTypes.instanceOf(Date),
+  value: PropTypes.string,
+  name: PropTypes.string,
+  label: PropTypes.string,
+  // @ts-ignore
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    }).isRequired,
+  ),
 };
 
 export default TaskSelectField;
