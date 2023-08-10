@@ -4,10 +4,13 @@ import { ITaskHeader } from './interfaces/ITaskHeader';
 import { format } from 'date-fns';
 import PropTypes from 'prop-types';
 
-const TaskHeader: FC<ITaskHeader> = (
-  props,
-): ReactElement => {
-  const { title = 'Task Title', date = new Date() } = props;
+const TaskHeader: FC<ITaskHeader> = ({
+  title,
+  date,
+}): ReactElement => {
+  //const { title = 'Task Title', date = new Date() } = props;
+
+  const formattedDate = format(date || new Date(), 'PPPP');
 
   return (
     <Box
@@ -22,7 +25,7 @@ const TaskHeader: FC<ITaskHeader> = (
       <Box>
         <Chip
           variant="outlined"
-          label={format(date, 'PPPP')}
+          label={formattedDate}
         ></Chip>
       </Box>
     </Box>
