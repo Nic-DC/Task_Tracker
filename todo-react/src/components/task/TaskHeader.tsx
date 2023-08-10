@@ -15,14 +15,6 @@ const TaskHeader: FC<ITaskHeader> = (
       width="100%"
       justifyContent="space-between"
       mb={4}
-      //   p={4}
-      //   sx={{
-      //     width: '100%',
-      //     backgroundColor: 'background.paper',
-      //     borderRadius: '8px',
-      //     border: '1px solid',
-      //     borderColor: 'err.light',
-      //   }}
     >
       <Box>
         <Typography variant="h6">{title}</Typography>
