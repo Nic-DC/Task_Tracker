@@ -10,7 +10,7 @@ const TaskDescription: FC<ITaskDescriptioin> = (
   const { description = 'Task description' } = props;
 
   return (
-    <Box>
+    <Box mb={2}>
       <Typography>{description}</Typography>
     </Box>
   );

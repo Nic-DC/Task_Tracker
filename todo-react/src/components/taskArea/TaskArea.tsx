@@ -44,6 +44,7 @@ const TaskArea: FC = (): ReactElement => {
           xs={10}
         >
           <Task />
+          <Task />
         </Grid>
       </Grid>
     </Grid>
